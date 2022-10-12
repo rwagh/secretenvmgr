@@ -20,7 +20,7 @@ export default {
       .promise();
 
     let envvars = JSON.parse(data.SecretString);
-    console.log(envvars);
+    //console.log(envvars);
     let keys = Object.keys(envvars);
     keys.forEach((k) => {
       process.env[k] = envvars[k];
