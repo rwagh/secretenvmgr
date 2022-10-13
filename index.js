@@ -2,6 +2,10 @@ import AWS from "aws-sdk";
 import dotenv from "dotenv";
 dotenv.config();
 
+console.log("process.env.REGION: ", process.env.REGION);
+console.log("process.env.SECRET_NAME: ", process.env.SECRET_NAME);
+console.log("process.env.ACCESS_KEY_ID: ", process.env.ACCESS_KEY_ID);
+console.log("process.env.SECRET_ACCESS_KEY: ", process.env.SECRET_ACCESS_KEY);
 //const decodedBinarySecret;
 AWS.config.credentials = {
   accessKeyId: process.env.ACCESS_KEY_ID,
