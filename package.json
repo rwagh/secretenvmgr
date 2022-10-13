@@ -1,6 +1,6 @@
 {
   "name": "secretenvmgr",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Environment variable loader",
   "main": "index.js",
   "type": "module",
