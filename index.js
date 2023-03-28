@@ -1,4 +1,4 @@
-import { SecretsManager } from "@aws-sdk/client-secrets-manager";
+import AWS from "aws-sdk";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -7,14 +7,12 @@ console.log("process.env.SECRET_NAME: ", process.env.SECRET_NAME);
 console.log("process.env.ACCESS_KEY_ID: ", process.env.ACCESS_KEY_ID);
 console.log("process.env.SECRET_ACCESS_KEY: ", process.env.SECRET_ACCESS_KEY);
 //const decodedBinarySecret;
-/* AWS.config.credentials = {
+AWS.config.credentials = {
   accessKeyId: process.env.ACCESS_KEY_ID,
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
-}; */
+};
 // Create a Secrets Manager client
-let client = new SecretsManager({
-  accessKeyId: process.env.ACCESS_KEY_ID,
-  secretAccessKey: process.env.SECRET_ACCESS_KEY,
+let client = new AWS.SecretsManager({
   region: process.env.REGION,
 });
 export default {
@@ -22,7 +20,8 @@ export default {
     let data = await client
       .getSecretValue({
         SecretId: process.env.SECRET_NAME,
-      });
+      })
+      .promise();
 
     let envvars = JSON.parse(data.SecretString);
     //console.log(envvars);
